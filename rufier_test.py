@@ -88,7 +88,7 @@ class Screen3(Screen):
       global P2
       p2_field = self.ids['p2_field']
       try:
-         P2 = int(p2_field.text)
+         P2 = int(p1_field.text)
          if P2 <= 0:
             p2_field.error = True
             p2_field.helper_text = 'Введите целое число больше 0'
@@ -98,6 +98,15 @@ class Screen3(Screen):
       except:
          p2_field.error = True
          p2_field.helper_text = 'Введите целое число'
+   def do_start(self):
+      btn_start = self.ids['btn_start']
+      countdown1 = self.ids['countdown1']
+      if btn_start.text == 'Старт':
+         btn_start.text = 'Далее'
+         btn_start.disabled = True
+         countdown1.start()
+      else:
+         self.move_next()
 
 class Screen4(Screen):
    pass
